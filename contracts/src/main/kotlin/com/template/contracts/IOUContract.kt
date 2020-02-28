@@ -33,12 +33,12 @@ class IOUContract : Contract {
 
                 requireThat {
                     // "Shape" Constraint - no. of input/output state, no. command
-                    "1. 没有输入 - Issue transaction must have no inputs" using(tx.inputStates.isNotEmpty())
+                    "1. 没有输入 - Issue transaction must have no inputs" using(tx.inputStates.isEmpty())
                     "2. 一个输出 - Issue transaction must have only one output" using(tx.outputStates.size == 1)
 
                     // Content Constraint - business(业务) Constraint
                     val outputState: ContractState = tx.outputStates[0]
-                    "4. 一个输出是IOUState - The output must be an IOUState" using(outputState !is IOUState)
+                    "4. 一个输出是IOUState - The output must be an IOUState" using(outputState is IOUState)
                     val iouOutput = outputState as IOUState
                     "5. 输出金额为正数 - The output amount must be a positive value" using(iouOutput.getAmount > 0)
 
@@ -46,7 +46,7 @@ class IOUContract : Contract {
                     val issuer: Party = iouOutput.getIssuer
                     val issuerKey: PublicKey = issuer.owningKey
                     "Issue transaction must have at least one sign" using(command.signers.isNotEmpty())
-                    "7. 发行人Issuer是签名者 - Issuer must sign" using(command.signers == issuerKey)
+                    "7. 发行人Issuer是签名者 - Issuer must sign" using(command.signers[0] == issuerKey)
 
                 }
             }

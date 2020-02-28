@@ -7,6 +7,7 @@ import net.corda.core.contracts.Command
 import net.corda.core.contracts.CommandData
 import net.corda.core.flows.*
 import net.corda.core.identity.Party
+import net.corda.core.transactions.SignedTransaction
 import net.corda.core.transactions.TransactionBuilder
 import net.corda.core.utilities.ProgressTracker
 
@@ -20,11 +21,11 @@ import net.corda.core.utilities.ProgressTracker
 class IOUFlowInitiator(private val issuer: Party,
                        private val owner: Party,
                        private val iouAmount: Int
-                ) : FlowLogic<Unit>() {
+                ) : FlowLogic<SignedTransaction>() {
     override val progressTracker = ProgressTracker()
 
     @Suspendable
-    override fun call() {
+    override fun call(): SignedTransaction {
         // Initiator flow logic goes here.
         val notary = serviceHub.networkMapCache.notaryIdentities[0]
 
@@ -35,7 +36,7 @@ class IOUFlowInitiator(private val issuer: Party,
         val command = Command(IOUContract.Issue(), outputState.getIssuer.owningKey)
 
         // 1. 创建TransactionBuilder + 5. 把Issuer的Command加到TransactionBuilder
-        val txBuilder = TransactionBuilder(notary)
+        val txBuilder = TransactionBuilder(notary=notary)
                 .addOutputState(outputState)
                 .addCommand(command)
 
@@ -46,12 +47,12 @@ class IOUFlowInitiator(private val issuer: Party,
         val ownerPartySession = initiateFlow(owner)
 
         // We finalise the transaction.
-        subFlow(FinalityFlow(signedTx, ownerPartySession))
+        return subFlow(FinalityFlow(signedTx))
     }
 }
 
 @InitiatedBy(IOUFlowInitiator::class)
-class IOUFlowResponder(val counterPartySession: FlowSession) : FlowLogic<Unit>() {
+class IOUFlowResponder(private val counterPartySession: FlowSession) : FlowLogic<Unit>() {
     @Suspendable
     override fun call() {
         // Responder flow logic goes here.
