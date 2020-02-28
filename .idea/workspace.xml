@@ -133,12 +133,24 @@
       <option name="presentableId" value="Default" />
       <updated>1582810032827</updated>
       <workItem from="1582810034598" duration="12009000" />
-      <workItem from="1582884705103" duration="31000" />
+      <workItem from="1582884705103" duration="299000" />
     </task>
+    <task id="LOCAL-00001" summary="Ignore test result html file">
+      <created>1582884963150</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1582884963150</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Ignore test result html file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ignore test result html file" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2671" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1582882869642">
@@ -149,10 +161,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2572" y="172" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582814173234" />
-    <state x="2440" y="113" key="CommitChangelistDialog2" timestamp="1582884886824">
+    <state x="2440" y="113" key="CommitChangelistDialog2" timestamp="1582884960570">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="2440" y="113" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582884886824" />
+    <state x="2440" y="113" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582884960570" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1582883748182">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -169,6 +181,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582883748182" />
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1582884969145">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582884969145" />
     <state x="2543" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1582813050854">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
