@@ -5,11 +5,13 @@ import com.template.contracts.IOUContract
 import com.template.states.IOUState
 import net.corda.core.contracts.Command
 import net.corda.core.contracts.CommandData
+import net.corda.core.contracts.requireThat
 import net.corda.core.flows.*
 import net.corda.core.identity.Party
 import net.corda.core.transactions.SignedTransaction
 import net.corda.core.transactions.TransactionBuilder
 import net.corda.core.utilities.ProgressTracker
+import java.security.PublicKey
 
 // Video tutorial: https://youtu.be/Mldg_GgbmTE?t=61
 
@@ -46,8 +48,15 @@ class IOUFlowInitiator(private val issuer: Party,
         // Creating a session with the owner.
         val ownerPartySession = initiateFlow(owner)
 
+        // Obtaining the counter party's signature.
+        val fullySignedTx = subFlow(CollectSignaturesFlow(
+                signedTx,
+                listOf(ownerPartySession),
+                CollectSignaturesFlow.tracker())
+        )
+
         // We finalise the transaction.
-        return subFlow(FinalityFlow(signedTx))
+        return subFlow(FinalityFlow(fullySignedTx))
     }
 }
 
@@ -56,6 +65,12 @@ class IOUFlowResponder(private val counterPartySession: FlowSession) : FlowLogic
     @Suspendable
     override fun call() {
         // Responder flow logic goes here.
-        subFlow(ReceiveFinalityFlow(counterPartySession))
+        val signTransactionFlow = object : SignTransactionFlow(counterPartySession, SignTransactionFlow.tracker()) {
+            override fun checkTransaction(stx: SignedTransaction) = requireThat {
+                val output = stx.tx.outputs.single().data
+                "This must be an IOU transaction." using (output is IOUState)
+            }
+        }
+        subFlow(signTransactionFlow)
     }
 }

@@ -46,7 +46,7 @@ class IOUContract : Contract {
                     val issuer: Party = iouOutput.getIssuer
                     val issuerKey: PublicKey = issuer.owningKey
                     "Issue transaction must have at least one sign" using(command.signers.isNotEmpty())
-                    "7. 发行人Issuer是签名者 - Issuer must sign" using(command.signers[0] == issuerKey)
+                    "7. 发行人Issuer要签名 - Issuer must sign" using(command.signers.contains(issuerKey))
 
                 }
             }

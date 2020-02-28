@@ -1,8 +1,11 @@
 package com.template
 
+import com.template.contracts.IOUContract
 import com.template.flows.*
 import com.template.states.IOUState
 import net.corda.core.concurrent.CordaFuture
+import net.corda.core.contracts.Command
+import net.corda.core.contracts.CommandData
 import net.corda.core.contracts.TransactionState
 import net.corda.core.identity.CordaX500Name
 import net.corda.core.identity.Party
@@ -15,6 +18,8 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 class FlowTests {
     private val network = MockNetwork(MockNetworkParameters(cordappsForAllNodes = listOf(
@@ -84,7 +89,10 @@ class FlowTests {
         val signedTransaction = future.get()
 
         // ** Run test cases ** //
-
+        assertEquals(1, signedTransaction.tx.outputStates.size)
+        val output = signedTransaction.tx.outputs[0]
+        print(output.contract)
+        assertEquals("com.template.contracts.IOUContract", output.contract)
 
     }
 
@@ -98,7 +106,10 @@ class FlowTests {
         val signedTransaction = future.get()
 
         // ** Run test cases ** //
+        assertEquals(1, signedTransaction.tx.outputStates.size)
+        val command = signedTransaction.tx.commands[0]
 
+        assert(command.value is IOUContract.Issue)
     }
 
     @Test
@@ -111,6 +122,12 @@ class FlowTests {
         val signedTransaction = future.get()
 
         // ** Run test cases ** //
+        assertEquals(1, signedTransaction.tx.outputStates.size)
+        val command = signedTransaction.tx.commands[0]
+
+        assertEquals(2, command.signers.size)
+        assertTrue(command.signers.contains(nodeA.info.legalIdentities[0].owningKey))
+        assertTrue(command.signers.contains(nodeB.info.legalIdentities[0].owningKey))
 
     }
 
@@ -124,8 +141,10 @@ class FlowTests {
         val signedTransaction = future.get()
 
         // ** Run test cases ** //
-
-
+        assertEquals(0, signedTransaction.tx.inputs.size)
+        // The single attachment is the contract attachment.
+        assertEquals(1, signedTransaction.tx.attachments.size)
+        assertNull(signedTransaction.tx.timeWindow)
     }
 
 }
