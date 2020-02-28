@@ -5,6 +5,7 @@ import com.template.contracts.IOUContract
 import com.template.states.IOUState
 import net.corda.core.contracts.Command
 import net.corda.core.contracts.CommandData
+import net.corda.core.contracts.StateAndContract
 import net.corda.core.contracts.requireThat
 import net.corda.core.flows.*
 import net.corda.core.identity.Party
@@ -12,6 +13,7 @@ import net.corda.core.transactions.SignedTransaction
 import net.corda.core.transactions.TransactionBuilder
 import net.corda.core.utilities.ProgressTracker
 import java.security.PublicKey
+import kotlin.reflect.jvm.jvmName
 
 // Video tutorial: https://youtu.be/Mldg_GgbmTE?t=61
 
@@ -33,14 +35,18 @@ class IOUFlowInitiator(private val issuer: Party,
 
         // 2. 创建要发行的债券IOUState
         val outputState = IOUState(issuer, owner, iouAmount)
+        val outputContract = IOUContract::class.jvmName
 
         // 3. 把IOUState加上跟IOUContract的参考值 + 4. 利用IOUState的Issuer作为必要的签名者
-        val command = Command(IOUContract.Issue(), outputState.getIssuer.owningKey)
+        val keyList = listOf<PublicKey>(outputState.getIssuer.owningKey, outputState.getOwner.owningKey)
+        val command = Command(IOUContract.Issue(), keyList)
+
+        val outputContractAndState = StateAndContract(outputState, outputContract)
 
         // 1. 创建TransactionBuilder + 5. 把Issuer的Command加到TransactionBuilder
-        val txBuilder = TransactionBuilder(notary=notary)
-                .addOutputState(outputState)
-                .addCommand(command)
+        val txBuilder = TransactionBuilder(notary=notary).withItems(outputContractAndState, command)
+
+        txBuilder.verify(serviceHub)
 
         // We sign the transaction.
         val signedTx = serviceHub.signInitialTransaction(txBuilder)
