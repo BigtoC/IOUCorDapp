@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f436473e-83a8-4a26-8799-1b725cdae16e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/contracts/src/main/kotlin/com/template/contracts/IOUContract.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contracts/src/main/kotlin/com/template/states/IOUState.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/contracts/src/test/kotlin/com/template/contracts/StateTests.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contracts/src/test/kotlin/com/template/contracts/ContractTests.kt" beforeDir="false" afterPath="$PROJECT_DIR$/contracts/src/test/kotlin/com/template/contracts/ContractTests.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workflows/src/main/kotlin/com/template/flows/Flows.kt" beforeDir="false" afterPath="$PROJECT_DIR$/workflows/src/main/kotlin/com/template/flows/Flows.kt" afterDir="false" />
-    </list>
+    <list default="true" id="f436473e-83a8-4a26-8799-1b725cdae16e" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +32,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
@@ -138,6 +133,7 @@
       <option name="presentableId" value="Default" />
       <updated>1582810032827</updated>
       <workItem from="1582810034598" duration="12009000" />
+      <workItem from="1582884705103" duration="31000" />
     </task>
     <servers />
   </component>
@@ -153,6 +149,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2572" y="172" key="#org.jetbrains.kotlin.idea.refactoring.move.moveDeclarations.ui.MoveKotlinTopLevelDeclarationsDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582814173234" />
+    <state x="2440" y="113" key="CommitChangelistDialog2" timestamp="1582884886824">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2440" y="113" key="CommitChangelistDialog2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1582884886824" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1582883748182">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
