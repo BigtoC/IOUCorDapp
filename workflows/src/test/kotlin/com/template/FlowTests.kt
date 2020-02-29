@@ -4,12 +4,8 @@ import com.template.contracts.IOUContract
 import com.template.flows.*
 import com.template.states.IOUState
 import net.corda.core.concurrent.CordaFuture
-import net.corda.core.contracts.Command
-import net.corda.core.contracts.CommandData
-import net.corda.core.contracts.TransactionState
 import net.corda.core.identity.CordaX500Name
 import net.corda.core.identity.Party
-import net.corda.core.internal.requiredContractClassName
 import net.corda.core.transactions.SignedTransaction
 import net.corda.testing.node.MockNetwork
 import net.corda.testing.node.MockNetworkParameters
