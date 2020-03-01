@@ -18,12 +18,12 @@ class ContractTests {
     private val iouState =  IOUState(alice.party, bob.party, 1)
 
     @Test
-    fun testIOUContractType() {
+    fun `test IOU Contract Type`() {
         assert(IOUContract() is Contract)
     }
 
     @Test
-    fun testContractRequiresZeroInputsInTheTransaction() {
+    fun `test Contract Requires Zero Inputs In The Transaction`() {
         return
     }
 

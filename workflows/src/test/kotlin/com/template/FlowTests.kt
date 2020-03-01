@@ -59,7 +59,7 @@ class FlowTests {
 
     @Test
     @Throws
-    fun transactionConstructedByFlowHasOneTokenStateOutputWithTheCorrectAmountAndOwner() {
+    fun `transaction Constructed By Flow Has One Token State Output With The Correct Amount And Owner`() {
         // ** Init the network ** //
         val flow = IOUFlowInitiator(alice, bob, 99)
         val future: CordaFuture<SignedTransaction> = nodeA.startFlow(flow)
@@ -77,7 +77,7 @@ class FlowTests {
 
     @Test
     @Throws
-    fun transactionConstructedByFlowHasOneOutputUsingTheCorrectContract() {
+    fun `transaction Constructed By Flow Has One Output Using The Correct Contract`() {
         // ** Init the network ** //
         val flow = IOUFlowInitiator(alice, bob, 99)
         val future: CordaFuture<SignedTransaction> = nodeA.startFlow(flow)
@@ -110,7 +110,7 @@ class FlowTests {
 
     @Test
     @Throws
-    fun transactionConstructedByFlowHasOneCommandWithTheIssuerAndTheOwnerAsASigners() {
+    fun `transaction Constructed By Flow Has One Command With The Issuer And The Owner As A Signer`() {
         // ** Init the network ** //
         val flow = IOUFlowInitiator(alice, bob, 99)
         val future: CordaFuture<SignedTransaction> = nodeA.startFlow(flow)
@@ -129,7 +129,7 @@ class FlowTests {
 
     @Test
     @Throws
-    fun transactionConstructedByFlowHasNoInputsAttachmentsOrTimeWindows() {
+    fun `transaction Constructed By Flow Has No Inputs Attachments Or Time Windows`() {
         // ** Init the network ** //
         val flow = IOUFlowInitiator(alice, bob, 99)
         val future: CordaFuture<SignedTransaction> = nodeA.startFlow(flow)
