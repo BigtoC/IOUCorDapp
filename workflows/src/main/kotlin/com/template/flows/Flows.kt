@@ -11,7 +11,6 @@ import net.corda.core.identity.Party
 import net.corda.core.transactions.SignedTransaction
 import net.corda.core.transactions.TransactionBuilder
 import net.corda.core.utilities.ProgressTracker
-import java.security.PublicKey
 import kotlin.reflect.jvm.jvmName
 
 // Video tutorial: https://youtu.be/Mldg_GgbmTE?t=61
@@ -37,7 +36,7 @@ class IOUFlowInitiator(private val issuer: Party,
         val outputContract = IOUContract::class.jvmName
 
         // 3. 把IOUState加上跟IOUContract的参考值 + 4. 利用IOUState的Issuer作为必要的签名者
-        val keyList = listOf<PublicKey>(outputState.getIssuer.owningKey, outputState.getOwner.owningKey)
+        val keyList = listOf(outputState.getIssuer.owningKey, outputState.getOwner.owningKey)
         val command = Command(IOUContract.Issue(), keyList)
 
         val outputContractAndState = StateAndContract(outputState, outputContract)
@@ -70,7 +69,7 @@ class IOUFlowResponder(private val counterPartySession: FlowSession) : FlowLogic
     @Suspendable
     override fun call() {
         // Responder flow logic goes here.
-        val signTransactionFlow = object : SignTransactionFlow(counterPartySession, SignTransactionFlow.tracker()) {
+        val signTransactionFlow = object : SignTransactionFlow(counterPartySession, tracker()) {
             override fun checkTransaction(stx: SignedTransaction) = requireThat {
                 val output = stx.tx.outputs.single().data
                 "This must be an IOU transaction." using (output is IOUState)
