@@ -24,7 +24,7 @@ class StateTests {
     }
 
     @Test
-    fun testStateHasTwoParticipants() {
+    fun testStateHasTwoParticipantsIssuerAndTheOwner() {
         val iouState = IOUState(alice, bob, 1)
         val participants = iouState.participants
         assertEquals(2, participants.size)

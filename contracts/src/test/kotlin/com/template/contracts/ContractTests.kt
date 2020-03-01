@@ -23,9 +23,40 @@ class ContractTests {
     }
 
     @Test
-    fun `test Contract Requires Zero Inputs In The Transaction`() {
+    fun `Contract Requires Zero Inputs In The Transaction`() {
         return
     }
+
+    @Test
+    fun `Contract Requires One Outputs In The Transaction`() {
+        return
+    }
+
+    @Test
+    fun `test Contract Requires One Command In The Transaction`() {
+        return
+    }
+
+    @Test
+    fun `test Contract Requires The Transactions Output To Be A TokenState`() {
+        return
+    }
+
+    @Test
+    fun `test Contract Requires Transactions Output To Have A Positive Amount`() {
+        return
+    }
+
+    @Test
+    fun `test Contract Requires The Transactions Command To Be An Issue Command`() {
+        return
+    }
+
+    @Test
+    fun `test Contract Requires The Issuer To Be A Required Signer In The Transaction`() {
+        return
+    }
+
 
 
 
