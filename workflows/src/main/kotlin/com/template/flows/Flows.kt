@@ -4,7 +4,6 @@ import co.paralleluniverse.fibers.Suspendable
 import com.template.contracts.IOUContract
 import com.template.states.IOUState
 import net.corda.core.contracts.Command
-import net.corda.core.contracts.CommandData
 import net.corda.core.contracts.StateAndContract
 import net.corda.core.contracts.requireThat
 import net.corda.core.flows.*
