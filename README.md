@@ -4,4 +4,6 @@
 * #### Boot-camp tutorial video from YouTube [Corda Bootcamp](https://www.youtube.com/playlist?list=PLi1PppB3-YrWXZEtOnp0pyLnnP2zjJCZe)  
 * #### Running the web server by following the [guideline](https://github.com/corda/samples/blob/release-V4/spring-webserver/README.md)  
 * #### Valuable CorDapp [examples](https://github.com/corda/samples)
-* #### Run the spring boot server using `.\gradlew.bat clients:runPartyAServer`  
+* #### Run the spring boot server
+     * Command: `.\gradlew.bat clients:runPartyAServer`  
+     * Access: `http://localhost:10054/tempEndpoint?name=hahaha`
