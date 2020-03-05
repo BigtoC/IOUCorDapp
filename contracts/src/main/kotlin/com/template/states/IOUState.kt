@@ -9,7 +9,7 @@ import net.corda.core.identity.Party
 // * State *
 // *********
 @BelongsToContract(IOUContract::class)
-class IOUState(private val issuer: Party,
+class IOUState (private val issuer: Party,
                private val owner: Party,
                private val amount: Int
                ) : ContractState {
