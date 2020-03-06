@@ -5,5 +5,11 @@
 * #### Running the web server by following the [guideline](https://github.com/corda/samples/blob/release-V4/spring-webserver/README.md)  
 * #### Valuable CorDapp [examples](https://github.com/corda/samples)
 * #### Run the spring boot server
-     * Command: `.\gradlew.bat clients:runPartyAServer`  
-     * Access: `http://localhost:10054/tempEndpoint?name=hahaha`
+    * Command: `.\gradlew.bat clients:runPartyAServer`  
+    * Access: `http://localhost:10054/tempEndpoint?name=hahaha`
+* #### Run procedures:
+    1. `.\gradlew.bat deployNodes`
+    2. `./build/nodes/runnodes`
+    3. `.\gradlew.bat clients:runPartyAServer` 
+* #### Clean deployed nodes: `.\gradlew.bat clean deployNodes`  
+
