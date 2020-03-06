@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import java.time.LocalDateTime
 import java.time.ZoneId
+import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
 
 /**
  * Define your API endpoints here.
@@ -27,8 +29,11 @@ class Controller(rpc: NodeRPCConnection) {
     private fun status() = "200"
 
     @GetMapping(value = ["/tempEndpoint"], produces = ["text/plain"])
-    private fun tempEndpoint(@RequestParam(value = "name")name: String): String {
-        return "Define an endpoint: $name"
+    private fun tempEndpoint(@RequestParam(value = "name")name: String, model: Model): String {
+        model.addAttribute("name", name)
+        val id = proxy.nodeInfo().legalIdentities.toString()
+        model.addAttribute("id", id)
+        return "index"
     }
 
     @GetMapping(value = ["/servertime"], produces = ["text/plain"])
