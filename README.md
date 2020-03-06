@@ -11,5 +11,6 @@
 * #### Run the spring boot server
     * Command: `.\gradlew.bat clients:runPartyAServer`  
     * Access: `http://localhost:10054/tempEndpoint?name=hahaha`
-* #### Clean deployed nodes: `.\gradlew.bat clean deployNodes`  
+* #### Clean deployed nodes: 
+    * `.\gradlew.bat clean deployNodes`  
 
