@@ -31,5 +31,7 @@
 
 * #### Troubleshooting
   * In my Ubuntu 18.04, missing `xterm`, install it ([tutorial](https://zoomadmin.com/HowToInstall/UbuntuPackage/xterm))
-  * More [cases](https://docs.corda.net/releases/M15-RC03/troubleshooting.html)  
+  * `gradlew: Permission Denied` : `chmod +x gradlew`
+  * `ERROR: JAVA_HOME is set to an invalid directory:` : Read this [article](https://www.jianshu.com/p/243f3dd93a32)
+  * More [cases](https://docs.corda.net/releases/M15-RC03/troubleshooting.html) and solutions  
   
